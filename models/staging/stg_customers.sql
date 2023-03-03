@@ -1,11 +1,8 @@
 with source as (
-
-    {#-
-    Normally we would select from the table here, but we are using seeds to load
-    our data in this project
-    #}
     select * from {{ ref('raw_customers') }}
-
+    -- select * from  {{ env_var('DBT_BQ_PROJECT') }}.{{ env_var('DBT_BQ_DATASET') }}.raw_customers
+    -- {{ env_var("DBT_ENV_DEPLOY")["DBT_BQ_PROJECT"] }}  
+    -- .{{ ref('raw_customers') }}
 ),
 
 renamed as (
